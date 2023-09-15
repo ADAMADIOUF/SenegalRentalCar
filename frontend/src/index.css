@@ -310,6 +310,7 @@ body, ul, li {
 
 /* Banner */
 .banner{
+  margin-top: 5rem;
   position: relative;
 }
 .banner-img{

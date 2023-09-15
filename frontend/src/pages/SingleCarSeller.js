@@ -35,7 +35,7 @@ const SingleCarSeller = () => {
 
   const handleAddToCart = () => {
     const message = `Je veux acheter ${product.make} ${product.model} ${product.pricePerDay}CFA`
-    const url = `https://wa.me/+221775190104?text=${encodeURIComponent(
+    const url = `https://wa.me/+221777730967?text=${encodeURIComponent(
       message
     )}`
     window.open(url, '_blank')
@@ -62,7 +62,7 @@ const SingleCarSeller = () => {
             {product.make} {product.model}
           </h2>
           <p>Description : {product.description}</p>
-          <p>Prix  : {product.pricePerDay} CFA </p>
+          <p>Prix : {product.pricePerDay} CFA </p>
           <h3>Informations supplémentaires :</h3>
           <p>
             <FaExclamationCircle className='icon' /> Année : {product.year}
@@ -110,7 +110,7 @@ const SingleCarSeller = () => {
             </button>
             {showWhatsAppWidget && (
               <WhatsAppWidget
-                phoneNumber='+221750132750'
+                phoneNumber='+221777730967'
                 message={`Je veux acheter ${product.model}/${product.pricePerDay}CFA`}
               />
             )}

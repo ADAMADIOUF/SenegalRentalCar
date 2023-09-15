@@ -57,7 +57,7 @@ const SingleDetail = () => {
       'fr-FR',
       frenchLocaleOptions
     )}/${endDate.toLocaleDateString('fr-FR', frenchLocaleOptions)}`
-    const url = `https://wa.me/+221775190104?text=${encodeURIComponent(
+    const url = `https://wa.me/+221777730967?text=${encodeURIComponent(
       message
     )}`
     window.open(url, '_blank')
@@ -160,7 +160,7 @@ const SingleDetail = () => {
             </button>
             {showWhatsAppWidget && (
               <WhatsAppWidget
-                phoneNumber='+221750132750'
+                phoneNumber='+221777730967'
                 message={`Je veux acheter ${startDate.toLocaleDateString(
                   'fr-FR',
                   frenchLocaleOptions

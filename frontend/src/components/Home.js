@@ -21,7 +21,7 @@ const Home = () => {
     window.scrollTo(0, 0)
   }, [location])
   return (
-    <div className='section-center'>
+    <div>
       <Banner />
       <BookingForm />
       <About/>

@@ -5,10 +5,10 @@ import { toast } from 'react-toastify'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
 import {
-
   useGetProductsQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
+  useUploadProductImageOwnerMutation,
 } from '../slices/productsApiSlice'
 
 const ProductEdit = () => {
@@ -51,6 +51,8 @@ const [ownerInfo, setOwnerInfo] = useState({
     useUpdateProductMutation()
   const [uploadProductImage, { isLoading: loadingUpload }] =
     useUploadProductImageMutation()
+    const [uploadProductImageOwner, { isLoading: loadingUploadOwner }] =
+      useUploadProductImageOwnerMutation()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -119,6 +121,25 @@ const [ownerInfo, setOwnerInfo] = useState({
     const updatedImages = images.filter((_, index) => index !== indexToDelete)
     setImages(updatedImages)
   }
+  const uploadOwnerImageHandler = async (e) => {
+    const formData = new FormData()
+    formData.append('image', e.target.files[0]) // Use 'image' as field name to match backend
+
+    try {
+      const res = await uploadProductImageOwner(formData).unwrap()
+      toast.success(res.message)
+
+      // Update the ownerInfo image URL
+      setOwnerInfo((prevOwnerInfo) => ({
+        ...prevOwnerInfo,
+        image: res.images[0], // Assuming there's only one image uploaded
+      }))
+    } catch (error) {
+      toast.error(error?.data?.message || error.error)
+    }
+  }
+
+
   return (
     <div className='section-center container-edit-product'>
       <Link to={`/admin/productlist`} className='btn-back'>
@@ -273,17 +294,12 @@ const [ownerInfo, setOwnerInfo] = useState({
             <div>
               <label>Owner Image</label>
               <input
-                type='text'
-                placeholder='Enter owner image URL'
-                value={ownerInfo.image}
-                onChange={(e) =>
-                  setOwnerInfo((prevOwnerInfo) => ({
-                    ...prevOwnerInfo,
-                    image: e.target.value,
-                  }))
-                }
+                type='file'
+                accept='image/*' // To restrict file types to images only
+                onChange={uploadOwnerImageHandler}
               />
             </div>
+
             <div>
               <label>Owner Phone Number</label>
               <input

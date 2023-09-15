@@ -13,6 +13,8 @@ import 'slick-carousel/slick/slick-theme.css'
 import { addFavorite, removeFavorite } from '../slices/favoritesSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
+import BannerLocation from '../components/BannerLocation'
+
 const CarLocation = () => {
   const location = useLocation()
 
@@ -97,6 +99,7 @@ const CarLocation = () => {
   )
   return (
     <div className='details-page'>
+      <BannerLocation/>
       <div className='booking-form-car'>
         <form onSubmit={handleFormSubmit} className='form-container-car'>
           <div>

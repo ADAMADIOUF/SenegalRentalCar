@@ -8,6 +8,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { addFavorite, removeFavorite } from '../slices/favoritesSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import BannerSeller from '../components/BannerSeller'
 
 const CarSeller = () => {
   const location = useLocation()
@@ -62,7 +63,7 @@ const CarSeller = () => {
 
   return (
     <div className='details-page section-center'>
-     
+     <BannerSeller/>
       <h2 className='seller-car-title'>Vente de Voiture</h2>
       {showMessage && <p className='message'>{favoriteMessage}</p>}
       {productToyota.length === 0 ? (
